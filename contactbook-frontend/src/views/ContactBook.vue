@@ -121,6 +121,14 @@ export default {
     mounted() {
         this.refreshList();
     },
+    watch: {
+        '$route.name'(newRoute) {
+            // Check if we are returning to this page after adding a contact
+            if (newRoute === 'contact.add') {
+                this.refreshList();  // Refresh the contact list after adding a new contact
+            }
+        }
+    }
 };
 </script>
 <style scoped>
